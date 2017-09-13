@@ -1,0 +1,44 @@
+<html>
+    <head>
+      <title>Email Validation</title>
+      <style>
+        body{
+          height: 100%;
+          width: 100%;
+        }
+        h1{
+          height: 10%;
+          width: 50%;
+        }
+        .invalid{
+          height: 20%;
+          width: 50%;
+          background-color: red;
+          color: black;
+          font-size: 20pt;
+        }
+        .blank{
+          height: 20%;
+          width: 50%;
+          background-color: black;
+          color: white;
+          font-size: 20pt;
+        }
+
+      </style>
+    </head>
+    <body>
+      <h1>Email Submission</h1>
+      {% with messages = get_flashed_messages(with_categories=true) %} <!--The with messages here helps us declare a variable in our template that we can use within a specific scope.-->
+        {% if messages %} <!--Check if there are even any messages that came back from the get_flashed_messages() function-->
+          {% for category, message in messages %}
+            <p class='{{ category }}'>{{message}}</p> <!--Print the messages one by one each in a paragraph tag-->
+          {% endfor %}    
+        {% endif %} 
+      {% endwith %}
+      <form action='/email_check' method='POST'>
+        <label for="email">Email Address:<input type="text" name="email" id="email"></label>
+        <input type="submit" value="Add">
+      </form>
+    </body>
+    </html>    

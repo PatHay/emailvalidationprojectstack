@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <title>Success!</title>
+    <style>
+        body{
+            height: 100%;
+            width: 100%;
+        }
+        #good{
+            height: 20%;
+            width: 50%;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="good">The email address you entered {{ session['entered_email'] }} is a VALID email address!  Thank you!</h1>
+    <h2>Email Addresses Entered:</h2>
+    {% for email in all_emails: %}
+    <p>{{ email['email'] }}</p>
+    <p>{{ email['created_at'] }}</p>
+    <hr>
+    {% endfor %}
+</body>
+
+</html>
